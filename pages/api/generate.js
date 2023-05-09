@@ -8,6 +8,7 @@ const openai = new OpenAIApi(configuration);
 
 const generateAction = async (req, res) => {
   const completion = await openai.createChatCompletion({
+    // gpt-3.5-turbo does not always pay strong attention to system messages. Future models will be trained to pay stronger attention to system messages.
     model: 'gpt-3.5-turbo',
     messages: [
       {
