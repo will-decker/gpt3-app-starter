@@ -21,7 +21,7 @@ const generateAction = async (req, res) => {
         content:
           'Provide a concise summary of the article that can be quickly read and understood.',
       },
-      { role: 'user', content: `${req.body.userInput}` },
+      { role: 'user', content: `${req.body.prompt}` },
     ],
   });
   console.log(completion.data.choices[0].message);
