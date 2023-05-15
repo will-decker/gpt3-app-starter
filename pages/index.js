@@ -33,6 +33,12 @@ const Home = () => {
     // console.log(event.target.value);
     setPrompt(event.target.value);
   };
+
+  const handleCopy = () => {
+    copy(apiOutput);
+    // You can add any additional UI feedback here, like showing a message that the text was copied
+  };
+
   return (
     <div className="root">
       <Head>
@@ -80,6 +86,18 @@ const Home = () => {
               <div className="output-header-container">
                 <div className="output-header">
                   <h3>Output</h3>
+                </div>
+                <div
+                  className="copy-icon"
+                  onClick={handleCopy}
+                  style={{
+                    cursor: 'pointer',
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                  }}
+                >
+                  📋
                 </div>
               </div>
               <div className="output-content">
