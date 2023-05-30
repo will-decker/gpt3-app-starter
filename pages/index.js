@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import buildspaceLogo from '../assets/buildspace-logo.png';
+import copy from 'copy-to-clipboard';
 
 const Home = () => {
   const [prompt, setPrompt] = useState('');
@@ -94,7 +95,7 @@ const Home = () => {
                     cursor: 'pointer',
                     position: 'absolute',
                     top: 0,
-                    right: 0,
+                    left: 0,
                   }}
                 >
                   📋
