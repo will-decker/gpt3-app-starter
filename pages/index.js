@@ -6,6 +6,7 @@ import copy from 'copy-to-clipboard';
 
 const Home = () => {
   const [prompt, setPrompt] = useState('');
+  const [promptOutput, setPromptOutput] = useState(''); // This is the output from the base prompt
 
   const [apiOutput, setApiOutput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -26,8 +27,14 @@ const Home = () => {
     const { output } = data;
     console.log('OpenAI replied...', output);
 
+    const savedPrompt = prompt; // Save the prompt value to a variable
+    setPrompt(''); // Clear the prompt state
+
     setApiOutput(`${output}`);
     setIsGenerating(false);
+
+    // Display the saved prompt value above the output
+    setPromptOutput(savedPrompt);
   };
 
   const onUserChangedText = (event) => {
@@ -77,16 +84,28 @@ const Home = () => {
                 {isGenerating ? (
                   <span className="loader"></span>
                 ) : (
-                  <p>Generate</p>
+                  <p>Optimize</p>
                 )}
               </div>
             </a>
           </div>
+          {promptOutput && ( // Display the prompt value above the output
+            <div className="output">
+              <div className="output-header-container">
+                <div className="output-header">
+                  <h3>Prompt</h3>
+                </div>
+              </div>
+              <div className="output-content">
+                <p>{promptOutput}</p>
+              </div>
+            </div>
+          )}
           {apiOutput && (
             <div className="output">
               <div className="output-header-container">
                 <div className="output-header">
-                  <h3>Output</h3>
+                  <h3>Optimized Prompt</h3>
                 </div>
                 <div
                   className="copy-icon"
